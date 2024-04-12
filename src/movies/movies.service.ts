@@ -41,4 +41,28 @@ export class MoviesService {
       { $limit: pageSize },
     ]);
   }
+
+  async findAllGenres(): Promise<any> {
+    return await this.movieModel.aggregate([
+      {
+        $unwind: '$genres',
+      },
+      {
+        $group: {
+          _id: null,
+          uniqueGenres: { $addToSet: '$genres' },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          uniqueGenres: 1,
+        },
+      },
+    ]);
+  }
+
+  async findCount() {
+    return await this.movieModel.countDocuments();
+  }
 }

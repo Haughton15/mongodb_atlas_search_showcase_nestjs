@@ -13,4 +13,14 @@ export class MoviesController {
   ) {
     return this.moviesService.findAll(title, +page, +pageSize);
   }
+
+  @Get('genres')
+  async findGenres() {
+    return this.moviesService.findAllGenres();
+  }
+
+  @Get('count')
+  async findCount() {
+    return this.moviesService.findCount();
+  }
 }
