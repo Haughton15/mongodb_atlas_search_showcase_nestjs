@@ -8,7 +8,7 @@ import { MoviesModule } from './movies/movies.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.MDB_URI, { dbName: 'sample_mflix' }),
+    MongooseModule.forRoot(process.env.MDB_URI),
     MoviesModule,
   ],
   controllers: [],
